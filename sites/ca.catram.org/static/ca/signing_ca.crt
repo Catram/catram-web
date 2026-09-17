@@ -1,0 +1,130 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 2 (0x2)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: DC=org, DC=catram, O=Catram Union, OU=Certificate Authroity, CN=Catram Root CA
+        Validity
+            Not Before: Aug 31 06:33:40 2018 GMT
+            Not After : Aug 30 06:33:40 2028 GMT
+        Subject: DC=org, DC=catram, O=Catram Union, OU=Authentication Service, CN=Catram Signing CA
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+                Modulus:
+                    00:d2:53:0d:03:f1:1d:f9:40:62:cc:9e:53:7c:72:
+                    eb:40:5d:5b:a2:47:73:49:94:ff:9d:91:6d:c9:5f:
+                    c7:29:3c:d7:91:56:3a:cf:5c:81:b5:cb:af:72:1c:
+                    59:78:7d:f2:35:84:7d:34:53:fe:1c:2e:56:c1:36:
+                    8b:82:94:a3:97:9e:28:54:ba:00:a6:ff:1b:01:26:
+                    b1:97:4e:5b:01:15:a0:43:66:ec:70:6b:42:60:94:
+                    1b:f0:d5:33:af:c9:3e:d9:63:10:ad:00:fd:0c:06:
+                    3c:f3:9f:cf:78:c6:1b:d3:c7:68:2d:bb:86:ca:72:
+                    79:cb:17:aa:9f:92:f3:45:a6:7b:09:50:95:a3:46:
+                    75:d2:a1:c2:71:7a:59:93:b7:52:77:33:5e:de:4b:
+                    d7:cc:93:da:ae:50:6d:d4:a6:23:cc:bb:c6:2c:57:
+                    5e:e3:09:dd:2d:2a:38:a1:d4:4b:ee:ae:2b:17:9a:
+                    74:08:09:8d:f6:a1:d4:ce:f9:a3:74:44:99:01:ac:
+                    c0:75:da:fa:88:75:37:d8:2b:9e:71:28:3a:c4:0f:
+                    93:4b:aa:dc:af:a5:69:aa:0e:bc:51:25:f5:98:44:
+                    e3:89:6a:91:b8:ba:ae:01:7b:31:04:ba:62:fd:17:
+                    ee:3a:c5:53:81:da:fb:27:d7:6c:d3:37:6f:2f:72:
+                    ac:f3:6f:c5:7f:f6:f2:d6:b0:e7:44:81:06:b3:2c:
+                    ca:70:cf:b4:48:5f:e8:95:e6:9e:a3:4a:b9:ee:c3:
+                    87:0c:57:eb:eb:ff:f2:33:dd:6f:a5:dc:31:83:ac:
+                    02:3c:d3:21:65:40:f0:ec:2e:21:34:c8:bc:34:76:
+                    66:13:96:94:87:d7:14:87:1e:b5:57:c5:88:a6:ea:
+                    6d:03:c4:88:b6:31:2b:32:68:56:a1:0f:dd:62:44:
+                    8d:a5:60:1e:b8:37:65:5b:15:c6:f5:25:b6:9e:c8:
+                    2f:8e:d1:2d:8e:11:e9:a3:c8:90:c0:8f:73:7b:46:
+                    52:8e:34:ce:e8:93:e3:8b:cb:65:84:41:96:cb:99:
+                    eb:01:91:a7:42:2a:67:db:49:df:23:44:1e:e9:60:
+                    d0:d3:02:64:16:97:51:19:8b:01:dc:ca:13:59:9b:
+                    51:71:16:ff:9c:e4:48:c4:74:45:e8:4b:bc:af:e4:
+                    90:3c:5a:b5:30:c5:b5:70:82:e4:b9:ee:a1:01:41:
+                    44:82:e2:9f:f6:61:54:68:c3:51:a8:13:27:6f:a7:
+                    ee:08:a7:d3:a4:3c:4a:e0:9e:47:1b:32:9f:7f:4e:
+                    02:ac:ae:fd:d1:fe:b0:28:ca:4e:25:5a:1b:65:aa:
+                    c5:a9:07:84:e5:de:6c:9e:2a:56:36:32:84:6b:7e:
+                    22:51:85
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Certificate Sign, CRL Sign
+            X509v3 Basic Constraints: critical
+                CA:TRUE, pathlen:0
+            X509v3 Subject Key Identifier: 
+                BA:07:38:52:56:DA:1D:CE:05:B2:47:83:32:2D:96:6E:75:6D:4A:8C
+            X509v3 CRL Distribution Points: 
+
+                Full Name:
+                  URI:https://ca.catram.org/signing_ca.crl
+
+            X509v3 Authority Key Identifier: 
+                keyid:76:A4:1D:46:47:92:D2:FA:78:4D:AB:08:B0:23:24:1B:B1:E5:01:C2
+
+    Signature Algorithm: sha256WithRSAEncryption
+         78:c8:e1:6d:12:63:79:39:2b:1b:ed:9c:92:6a:6e:9f:c9:7f:
+         d6:1f:22:04:bc:53:26:b4:35:eb:ba:45:86:3c:46:9a:b0:82:
+         42:1d:7d:d8:17:5e:8a:8d:0b:2d:8d:41:fe:92:d5:6d:35:69:
+         12:1d:05:4e:47:9d:b0:1a:cf:bd:37:39:98:b5:a1:68:f7:a0:
+         c6:d9:06:eb:f0:00:ff:73:34:36:7b:cc:82:59:8b:56:81:2e:
+         4b:c3:07:e2:4b:92:f0:73:c2:e9:a5:8e:13:13:42:1d:95:ba:
+         cb:b7:18:ab:b7:bb:a6:28:66:46:a0:c0:00:28:5e:5c:71:4a:
+         86:cb:19:f7:9a:c4:29:46:51:24:e7:64:4c:a8:bd:ca:c7:3b:
+         5b:e8:6d:9c:e6:40:6c:d3:fa:f8:f9:8d:8a:5d:80:69:4f:e3:
+         68:27:b2:fa:cf:22:6c:24:0f:80:e5:53:69:0a:df:bf:08:a0:
+         5d:fe:27:f5:18:ec:19:ba:41:ce:3b:33:5d:d0:ee:9d:f8:91:
+         5c:67:dd:4b:37:80:c5:5f:9f:c3:90:92:89:db:bb:92:69:2c:
+         88:77:d7:72:72:0e:4b:76:b2:af:da:2d:e8:cc:57:59:49:0d:
+         74:41:25:5b:a5:99:3b:95:b2:77:46:81:0b:b3:1b:6f:f1:12:
+         f1:0c:65:32:6f:ca:10:34:71:2c:f0:37:03:fe:1d:72:e6:5e:
+         2d:cf:0f:e1:2d:0a:19:02:3d:a2:e7:4e:b3:63:a2:82:93:b8:
+         bb:29:7c:1a:d2:5e:fa:e4:f5:2f:f8:57:02:18:ea:af:55:a4:
+         74:19:59:f8:ca:7d:3e:b4:9c:b9:24:fd:5a:ca:27:a5:7c:77:
+         34:38:0a:5a:5e:81:c7:f6:2f:73:ab:22:0c:f6:b3:a5:81:5c:
+         e0:59:4f:50:e1:cf:fc:2f:cd:7e:1f:2e:e7:5a:d7:9e:48:a0:
+         17:25:9f:03:ef:50:fa:8c:fe:93:f2:34:25:79:e3:4c:95:aa:
+         55:bc:c1:39:ab:fc:8a:e3:9b:42:c0:82:7f:3f:44:14:67:7d:
+         a9:82:1c:3b:d1:5a:e8:e8:98:80:9e:c7:e4:e4:45:35:c5:19:
+         50:a7:cc:70:cc:ed:00:29:b6:c5:37:4c:0c:c9:fc:25:c2:cc:
+         b8:84:a0:89:27:10:36:8d:72:24:20:c7:e6:9c:77:2c:70:3a:
+         05:6b:25:2c:1b:54:30:4f:cd:b7:e9:d6:69:1d:48:c3:d0:fd:
+         cb:b5:4b:ee:b5:55:18:4c:5a:b3:f5:62:86:6a:6c:5c:d1:45:
+         38:cc:ca:c8:c4:e8:cc:b9:98:3c:f3:e6:9c:f8:d7:d5:aa:57:
+         fc:a5:9a:cf:46:9d:89:35
+-----BEGIN CERTIFICATE-----
+MIIGGTCCBAGgAwIBAgIBAjANBgkqhkiG9w0BAQsFADB9MRMwEQYKCZImiZPyLGQB
+GRYDb3JnMRYwFAYKCZImiZPyLGQBGRYGY2F0cmFtMRUwEwYDVQQKDAxDYXRyYW0g
+VW5pb24xHjAcBgNVBAsMFUNlcnRpZmljYXRlIEF1dGhyb2l0eTEXMBUGA1UEAwwO
+Q2F0cmFtIFJvb3QgQ0EwHhcNMTgwODMxMDYzMzQwWhcNMjgwODMwMDYzMzQwWjCB
+gTETMBEGCgmSJomT8ixkARkWA29yZzEWMBQGCgmSJomT8ixkARkWBmNhdHJhbTEV
+MBMGA1UECgwMQ2F0cmFtIFVuaW9uMR8wHQYDVQQLDBZBdXRoZW50aWNhdGlvbiBT
+ZXJ2aWNlMRowGAYDVQQDDBFDYXRyYW0gU2lnbmluZyBDQTCCAiIwDQYJKoZIhvcN
+AQEBBQADggIPADCCAgoCggIBANJTDQPxHflAYsyeU3xy60BdW6JHc0mU/52Rbclf
+xyk815FWOs9cgbXLr3IcWXh98jWEfTRT/hwuVsE2i4KUo5eeKFS6AKb/GwEmsZdO
+WwEVoENm7HBrQmCUG/DVM6/JPtljEK0A/QwGPPOfz3jGG9PHaC27hspyecsXqp+S
+80WmewlQlaNGddKhwnF6WZO3UnczXt5L18yT2q5QbdSmI8y7xixXXuMJ3S0qOKHU
+S+6uKxeadAgJjfah1M75o3REmQGswHXa+oh1N9grnnEoOsQPk0uq3K+laaoOvFEl
+9ZhE44lqkbi6rgF7MQS6Yv0X7jrFU4Ha+yfXbNM3by9yrPNvxX/28taw50SBBrMs
+ynDPtEhf6JXmnqNKue7DhwxX6+v/8jPdb6XcMYOsAjzTIWVA8OwuITTIvDR2ZhOW
+lIfXFIcetVfFiKbqbQPEiLYxKzJoVqEP3WJEjaVgHrg3ZVsVxvUltp7IL47RLY4R
+6aPIkMCPc3tGUo40zuiT44vLZYRBlsuZ6wGRp0IqZ9tJ3yNEHulg0NMCZBaXURmL
+AdzKE1mbUXEW/5zkSMR0RehLvK/kkDxatTDFtXCC5LnuoQFBRILin/ZhVGjDUagT
+J2+n7gin06Q8SuCeRxsyn39OAqyu/dH+sCjKTiVaG2WqxakHhOXebJ4qVjYyhGt+
+IlGFAgMBAAGjgZ4wgZswDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8C
+AQAwHQYDVR0OBBYEFLoHOFJW2h3OBbJHgzItlm51bUqMMDUGA1UdHwQuMCwwKqAo
+oCaGJGh0dHBzOi8vY2EuY2F0cmFtLm9yZy9zaWduaW5nX2NhLmNybDAfBgNVHSME
+GDAWgBR2pB1GR5LS+nhNqwiwIyQbseUBwjANBgkqhkiG9w0BAQsFAAOCAgEAeMjh
+bRJjeTkrG+2ckmpun8l/1h8iBLxTJrQ167pFhjxGmrCCQh192Bdeio0LLY1B/pLV
+bTVpEh0FTkedsBrPvTc5mLWhaPegxtkG6/AA/3M0NnvMglmLVoEuS8MH4kuS8HPC
+6aWOExNCHZW6y7cYq7e7pihmRqDAACheXHFKhssZ95rEKUZRJOdkTKi9ysc7W+ht
+nOZAbNP6+PmNil2AaU/jaCey+s8ibCQPgOVTaQrfvwigXf4n9RjsGbpBzjszXdDu
+nfiRXGfdSzeAxV+fw5CSidu7kmksiHfXcnIOS3ayr9ot6MxXWUkNdEElW6WZO5Wy
+d0aBC7Mbb/ES8QxlMm/KEDRxLPA3A/4dcuZeLc8P4S0KGQI9oudOs2OigpO4uyl8
+GtJe+uT1L/hXAhjqr1WkdBlZ+Mp9PrScuST9WsonpXx3NDgKWl6Bx/Yvc6siDPaz
+pYFc4FlPUOHP/C/Nfh8u51rXnkigFyWfA+9Q+oz+k/I0JXnjTJWqVbzBOav8iuOb
+QsCCfz9EFGd9qYIcO9Fa6OiYgJ7H5ORFNcUZUKfMcMztACm2xTdMDMn8JcLMuISg
+iScQNo1yJCDH5px3LHA6BWslLBtUME/Nt+nWaR1Iw9D9y7VL7rVVGExas/Vihmps
+XNFFOMzKyMTozLmYPPPmnPjX1apX/KWaz0adiTU=
+-----END CERTIFICATE-----
