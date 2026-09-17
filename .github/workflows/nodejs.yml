@@ -1,0 +1,76 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          ssh-key: ${{ secrets.HUGO_THEME_SSH_KEY }}
+      - name: Use Node.js latest
+        uses: actions/setup-node@v6
+        with:
+          node-version: "latest"
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
+          extended: true
+      - name: Install dependencies
+        run: |
+          npm ci
+      - name: Generate types
+        run: |
+          npm run cf-typegen
+      - name: Build sites with Hugo
+        run: |
+          npm run build
+      - name: Lint
+        run: npx eslint .
+      - name: Type check
+        run: npx tsc --noEmit
+      - name: Run tests
+        run: |
+          npm test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          ssh-key: ${{ secrets.HUGO_THEME_SSH_KEY }}
+      - name: Use Node.js latest
+        uses: actions/setup-node@v6
+        with:
+          node-version: "latest"
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
+          extended: true
+      - name: Install dependencies
+        run: |
+          npm ci
+      - name: Build sites with Hugo
+        run: |
+          npm run build
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "latest"

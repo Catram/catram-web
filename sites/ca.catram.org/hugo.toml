@@ -1,0 +1,9 @@
+baseURL = "https://ca.catram.org/"
+locale = "en-us"
+title = "Catram CAs"
+theme = "hugo-theme"
+disableKinds = ["sitemap", "rss", "taxonomy", "term"]
+
+[params]
+  author = "Yishen Miao"
+  description = "Catram certificate authorities."
