@@ -1,0 +1,24 @@
+name = "catram-web"
+main = "src/index.ts"
+compatibility_date = "2026-09-17"
+workers_dev = false
+preview_urls = false
+
+routes = [
+    { pattern = "catram.org", custom_domain = true },
+    { pattern = "www.catram.org", custom_domain = true },
+    { pattern = "ca.catram.org", custom_domain = true },
+    { pattern = "ontology.catram.org", custom_domain = true },
+]
+
+# Every site is built under dist/<hostname>/. The Worker runs first so it can
+# pick the directory from the Host header; without it the asset server would
+# answer on the bare /<hostname>/... paths instead.
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = true
+not_found_handling = "none"
+
+[observability]
+enabled = true
