@@ -24,11 +24,11 @@ const CONTENT_TYPES: Record<string, string> = {
     ".crl": "application/pkix-crl",
 };
 
-/** Per-site rewrite tables (`_rewrites.json`), loaded once per isolate. */
+const DEFAULT_SITE = SITES["catram.org"];
 const rewrites = new Map<string, Promise<Record<string, string>>>();
 
-function siteOf(host: string): string | undefined {
-    const hostname = host.split(":")[0].toLowerCase();
+function siteOf(url: URL): string | undefined {
+    const hostname = url.hostname.toLowerCase();
 
     if (hostname in SITES) {
         return SITES[hostname];
@@ -37,10 +37,15 @@ function siteOf(host: string): string | undefined {
     // `wrangler dev`: reach a site as e.g. ca.catram.org.localhost:8787, and
     // fall back to the portal for a bare localhost.
     if (hostname === "localhost" || hostname === "127.0.0.1") {
-        return SITES["catram.org"];
+        return DEFAULT_SITE;
     }
-    const local = hostname.replace(/\.localhost$/, "");
-    return local === hostname ? undefined : SITES[local];
+
+    if (!hostname.endsWith(".localhost")) {
+        return undefined;
+    }
+
+    const local = hostname.slice(0, -".localhost".length);
+    return local in SITES ? SITES[local] : undefined;
 }
 
 async function loadRewrites(
@@ -48,29 +53,28 @@ async function loadRewrites(
     env: Env,
     origin: string,
 ): Promise<Record<string, string>> {
-    let table = rewrites.get(site);
-
-    if (!table) {
-        table = env.ASSETS.fetch(
-            new Request(`${origin}/${site}/_rewrites.json`),
-        )
-            .then((response) =>
-                response.ok ? response.json<Record<string, string>>() : {},
-            )
-            .catch(() => ({}));
-        rewrites.set(site, table);
+    const cached = rewrites.get(site);
+    if (cached) {
+        return cached;
     }
 
-    return table;
+    const promise = env.ASSETS.fetch(new URL(`/${site}/_rewrites.json`, origin))
+        .then((response) =>
+            response.ok ? response.json<Record<string, string>>() : {},
+        )
+        .catch(() => ({}));
+
+    rewrites.set(site, promise);
+    return promise;
 }
 
-async function asset(
+function asset(
     site: string,
     path: string,
     env: Env,
     origin: string,
 ): Promise<Response> {
-    return env.ASSETS.fetch(new Request(`${origin}/${site}${path}`));
+    return env.ASSETS.fetch(new URL(`${site}${path}`, origin));
 }
 
 export default {
@@ -83,7 +87,7 @@ export default {
             return Response.redirect(url.toString(), 301);
         }
 
-        const site = siteOf(url.host);
+        const site = siteOf(url);
         if (!site) {
             return new Response("Unknown host.\n", {
                 status: 404,

@@ -33,6 +33,16 @@ describe("site routing", () => {
         );
     });
 
+    it.each([
+        ["http://localhost:8787/", "Catram Front Page"],
+        ["http://ca.catram.org.localhost:8787/", "Catram CAs"],
+    ])("serves local dev host %s from its site", async (url, title) => {
+        const res = await get(url);
+
+        expect(res.status).toBe(200);
+        expect(await res.text()).toContain(title);
+    });
+
     it("does not serve a site under its directory name", async () => {
         const res = await get("https://catram.org/ca.catram.org/index.html");
 
