@@ -1,0 +1,89 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # The theme is a submodule in a private repo, which the job's own token
+      # cannot read. A GitHub App mints a token scoped to that one repo, good
+      # for an hour, so nothing long-lived is handed to the checkout.
+      - name: Token for the theme repository
+        id: theme-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.HUGO_THEME_APP_ID }}
+          private-key: ${{ secrets.HUGO_THEME_APP_PRIVATE_KEY }}
+          owner: Catram
+          # checkout uses this token for this repository as well as the
+          # submodule, so the app must reach both.
+          repositories: |
+            catram-web
+            hugo-theme
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          token: ${{ steps.theme-token.outputs.token }}
+      - name: Use Node.js latest
+        uses: actions/setup-node@v7
+        with:
+          node-version: "latest"
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
+          extended: true
+      - name: Install dependencies
+        run: |
+          npm ci
+      - name: Build sites with Hugo
+        run: |
+          npm run build
+      - name: Lint
+        run: npx eslint .
+      - name: Type check
+        run: npx tsc --noEmit
+      - name: Run tests
+        run: |
+          npm test
+      - name: Upload the built sites
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      # wrangler needs wrangler.toml, src/ and dist/ -- no theme, no Hugo and
+      # no npm install, so this checkout needs neither the submodule nor a
+      # token for the private theme repository.
+      - uses: actions/checkout@v7
+      - name: Use Node.js latest
+        uses: actions/setup-node@v7
+        with:
+          node-version: "latest"
+      - name: Download the built sites
+        uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "latest"

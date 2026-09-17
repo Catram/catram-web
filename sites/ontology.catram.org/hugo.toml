@@ -1,0 +1,21 @@
+baseURL = "https://ontology.catram.org/"
+locale = "en-us"
+title = "Catram Ontology"
+theme = "hugo-theme"
+disableKinds = ["sitemap", "rss", "taxonomy", "term"]
+
+[params]
+  author = "Yishen Miao"
+  description = "Catram ontology collection."
+
+# Emitted alongside the home page and consumed by the Worker, which rewrites
+# each source path to its target asset. Replaces the Pages `_redirects` file,
+# which cannot be used once the sites share one asset root.
+[outputs]
+  home = ["html", "rewrites"]
+
+[outputFormats.rewrites]
+  mediaType = "application/json"
+  baseName = "_rewrites"
+  isPlainText = true
+  notAlternative = true

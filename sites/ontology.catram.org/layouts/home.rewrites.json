@@ -1,0 +1,10 @@
+{{- $rewrites := dict -}}
+{{- range hugo.Data.ontology -}}
+  {{- $ontology := . -}}
+  {{- range $ontology.versions -}}
+    {{- $rewrites = merge $rewrites (dict (printf "/%s/%s" $ontology.id .version) (printf "/%s" .file)) -}}
+  {{- end -}}
+  {{- $latest := index (where $ontology.versions "version" "eq" $ontology.latest_version) 0 -}}
+  {{- $rewrites = merge $rewrites (dict (printf "/%s" $ontology.id) (printf "/%s" $latest.file)) -}}
+{{- end -}}
+{{- jsonify (dict "indent" "  ") $rewrites -}}

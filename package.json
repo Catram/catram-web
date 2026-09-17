@@ -1,0 +1,27 @@
+{
+    "name": "catram-web",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "build": "sh ./build.sh",
+        "test": "vitest",
+        "dev": "wrangler dev",
+        "start": "npm run dev",
+        "deploy": "wrangler deploy",
+        "cf-typegen": "wrangler types"
+    },
+    "devDependencies": {
+        "@cloudflare/vitest-pool-workers": "0.22.0",
+        "@eslint/js": "10.0.1",
+        "@eslint/json": "2.1.0",
+        "@eslint/markdown": "8.0.3",
+        "eslint": "10.10.0",
+        "globals": "17.12.0",
+        "npm-check-updates": "23.1.0",
+        "prettier": "3.9.7",
+        "typescript": "6.0.3",
+        "typescript-eslint": "8.70.0",
+        "vitest": "4.1.11",
+        "wrangler": "4.134.0"
+    }
+}
