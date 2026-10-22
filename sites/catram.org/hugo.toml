@@ -1,9 +1,0 @@
-baseURL = "https://catram.org/"
-locale = "en-us"
-title = "Catram"
-theme = "hugo-theme"
-disableKinds = ["sitemap", "rss", "taxonomy", "term"]
-
-[params]
-  author = "Yishen Miao"
-  description = "The portal to various Catram sites."
