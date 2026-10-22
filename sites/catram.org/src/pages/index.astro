@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@theme/layouts/BaseLayout.astro";
+import site from "../site.js";
+
+const page = {
+    title: "Catram Front Page",
+    description: "The front page of Catram sites.",
+    lead: "This is the portal to various Catram sites.",
+    active: "home",
+};
+---
+
+<BaseLayout site={site} {...page}>
+    <div class="container">
+        <p>Welcome to the Catram sites portal.</p>
+    </div>
+</BaseLayout>

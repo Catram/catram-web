@@ -14,33 +14,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Token for the theme repository
-        id: theme-token
-        uses: actions/create-github-app-token@v3
-        with:
-          client-id: ${{ secrets.HUGO_THEME_APP_ID }}
-          private-key: ${{ secrets.HUGO_THEME_APP_PRIVATE_KEY }}
-          owner: Catram
-          repositories: |
-            catram-web
-            hugo-theme
       - uses: actions/checkout@v7
-        with:
-          submodules: recursive
-          token: ${{ steps.theme-token.outputs.token }}
       - name: Use Node.js latest
         uses: actions/setup-node@v7
         with:
           node-version: "latest"
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "latest"
-          extended: true
       - name: Install dependencies
         run: |
           npm ci
-      - name: Build sites with Hugo
+      - name: Build sites with Astro
         run: |
           npm run build
       - name: Lint

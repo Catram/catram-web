@@ -1,0 +1,69 @@
+---
+import Favicons from "../components/Favicons.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { scripts, stylesheets } from "../data/cdnlibs.js";
+import mainCss from "../styles/main.css?url";
+
+const {
+    site,
+    title,
+    description = site.description,
+    lead,
+    active,
+} = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>{title} | {site.title}</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+        />
+        <meta name="description" content={description} />
+        <meta name="author" content={site.author} />
+
+        <link rel="stylesheet" href={mainCss} />
+        {
+            stylesheets.map((library) => (
+                <link
+                    rel="stylesheet"
+                    href={library.url}
+                    integrity={library.integrity}
+                    crossorigin={library.crossorigin}
+                    referrerpolicy={library.referrerpolicy}
+                />
+            ))
+        }
+        <Favicons />
+    </head>
+    <body>
+        <Navbar active={active} />
+        <PageHeader title={title} lead={lead} />
+
+        <main>
+            <slot />
+        </main>
+
+        <Footer author={site.author} year={year} />
+
+        {
+            scripts.map((library) => (
+                <script
+                    is:inline
+                    src={library.url}
+                    integrity={library.integrity}
+                    crossorigin={library.crossorigin}
+                    referrerpolicy={library.referrerpolicy}
+                ></script>
+            ))
+        }
+        <script is:inline src="/js/theme-mode.js"></script>
+    </body>
+</html>

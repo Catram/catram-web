@@ -1,7 +1,7 @@
 /**
  * One Worker for every Catram static site.
  *
- * `build.sh` writes each Hugo site to `dist/<hostname>/`, and this handler
+ * `build.js` writes each Astro site to `dist/<hostname>/`, and this handler
  * picks the directory from the request's Host header before handing the
  * request to the static-asset binding.
  */
@@ -95,8 +95,7 @@ export default {
             });
         }
 
-        // A rewrite serves another path's asset under the requested URL, the way
-        // the `200` rules in the old `_redirects` files did.
+        // A rewrite serves another path's asset under the requested URL.
         const path =
             (await loadRewrites(site, env, url.origin))[url.pathname] ??
             url.pathname;

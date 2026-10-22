@@ -111,6 +111,25 @@ describe("certificate authority files", () => {
     });
 });
 
+describe("Astro assets", () => {
+    it("serves the hashed stylesheet from the host's own directory", async () => {
+        const page = await get("https://ca.catram.org/");
+        const html = await page.text();
+        const href = [...html.matchAll(/href="([^"]+\.css)"/g)]
+            .map((match) => match[1])
+            .find((value) => value.includes("/_astro/"));
+
+        if (!href) {
+            throw new Error("the page did not link to an Astro stylesheet");
+        }
+
+        const css = await get(`https://ca.catram.org${href}`);
+
+        expect(css.status).toBe(200);
+        expect(css.headers.get("content-type")).toContain("text/css");
+    });
+});
+
 describe("not found", () => {
     it("serves the site's own 404 page", async () => {
         const res = await get("https://ca.catram.org/nope");
