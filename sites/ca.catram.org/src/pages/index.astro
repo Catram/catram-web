@@ -1,0 +1,37 @@
+---
+import BaseLayout from "@theme/layouts/BaseLayout.astro";
+import authorities from "../data/ca.json";
+import site from "../site.js";
+
+const page = {
+    title: "Catram CAs",
+    description: "Catram certificate authorities.",
+    lead: "A list of Catram certificate authorities and their revocation lists.",
+    active: "ca",
+};
+---
+
+<BaseLayout site={site} {...page}>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            {
+                authorities.map((authority) => (
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">
+                                {authority.name}
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{authority.description}</p>
+                            <a href={`/${authority.certificate}`}>
+                                Certificate
+                            </a>
+                            <a href={`/${authority.crl}`}>CRL</a>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</BaseLayout>

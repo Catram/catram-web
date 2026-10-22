@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Root CA",
+        "description": "The Catram Root CA signs all intermediate Catram CAs with this certificate.",
+        "certificate": "ca/root_ca.crt",
+        "crl": "ca/root_ca.crl"
+    },
+    {
+        "name": "Signing CA",
+        "description": "The Catram Signing CA signs all user certificates with this certificate.",
+        "certificate": "ca/signing_ca.crt",
+        "crl": "ca/signing_ca.crl"
+    }
+]

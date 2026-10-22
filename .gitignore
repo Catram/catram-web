@@ -138,10 +138,9 @@ dist
 # Wrangler cache
 .wrangler/
 
-# Hugo
-.hugo_build.lock
-.hugo_cache/
-resources/_gen/
+# Astro
+.astro/
+**/.astro/
 
 # Build output
 dist/

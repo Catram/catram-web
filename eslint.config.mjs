@@ -48,10 +48,8 @@ export default defineConfig([
     {
         ignores: [
             "dist/",
-            // Hugo templates, which carry the suffix of what they render.
-            "**/layouts/**",
-            // The theme is a submodule with its own tooling.
-            "themes/",
+            ".astro/",
+            "**/.astro/",
             "package-lock.json",
             "tsconfig.json",
             "worker-configuration.d.ts",
